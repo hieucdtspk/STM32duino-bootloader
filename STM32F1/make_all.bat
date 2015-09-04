@@ -21,3 +21,5 @@ make clean
 make generic-pa9
 make clean
 make generic-pe5
+make clean
+make easystm32-reva

@@ -231,6 +231,18 @@
 	#define BUTTON_BANK GPIOD
 	#define BUTTON_PIN 2
 	#define BUTTON_PRESSED_STATE 1
+
+// HieuNT: STM32duino is now supported for EasySTM32_Rev_A
+// Details: https://code.google.com/p/stm32vn/wiki/EASY_STM32_GETTING_START
+#elif defined TARGET_EASYSTM32_REV_A
+		
+	#define LED_BANK			GPIOB 
+	#define LED_PIN 			1
+	#define LED_ON_STATE		0
+
+	/* USB Disc Pin Setup.   USB DISC is PA8 */
+	#define USB_DISC_BANK       GPIOA
+	#define USB_DISC            8
 	
 #else
 	#error "No config for this target"

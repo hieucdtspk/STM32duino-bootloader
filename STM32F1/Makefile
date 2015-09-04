@@ -124,6 +124,7 @@ generic-pb9: begin gccversion build_generic-pb9 sizeafter finished  copy_generic
 generic-pe2: begin gccversion build_generic-pe2 sizeafter finished  copy_generic-pe2 end
 generic-pa9: begin gccversion build_generic-pa9 sizeafter finished  copy_generic-pa9 end
 generic-pe5: begin gccversion build_generic-pe5 sizeafter finished  copy_generic-pe5 end
+easystm32-reva: begin gccversion build_easystm32-reva sizeafter finished  copy_easystm32-reva end
 
 build: elf bin lss sym
 
@@ -267,6 +268,18 @@ copy_generic-pe5:
 	cp $(TARGET).bin binaries/generic_boot20_pe5.bin
 	@echo		
 	
+# EasySTM32 Rev A
+# https://code.google.com/p/stm32vn/wiki/EASY_STM32_GETTING_START
+build_easystm32-reva: TARGETFLAGS= -DTARGET_EASYSTM32_REV_A
+# Set the linker script
+build_easystm32-reva: LDFLAGS +=-T$(ST_LIB)/c_only_md_high_density.ld
+build_easystm32-reva: elf bin lss sym
+copy_easystm32-reva: 
+	@echo
+	@echo "Copying to binaries folder"
+	@echo
+	cp $(TARGET).bin binaries/easystm32_rev_a_boot20.bin
+	@echo	
 	
 bin: $(TARGET).bin
 elf: $(TARGET).elf
